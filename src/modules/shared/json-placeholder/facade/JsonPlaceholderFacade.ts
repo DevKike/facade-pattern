@@ -7,8 +7,8 @@ export class JsonPlaceholderFacade {
   ) {}
 
   async getUser(userId: number): Promise<IUser | null> {
-    let allUsers = this._jsonPlaceholderService.getUsers();
-    const currentUser = (await allUsers).find((user) => user.id === userId);
+    let allUsers = await this._jsonPlaceholderService.getUsers();
+    const currentUser = allUsers.find((user) => user.id === userId);
     let allPosts = await this._jsonPlaceholderService.getPosts();
     let allTodos = await this._jsonPlaceholderService.getTodos();
 
